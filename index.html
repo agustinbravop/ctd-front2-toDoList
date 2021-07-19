@@ -4,39 +4,43 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./styles/login.css">
+  <link rel="stylesheet" href="css/login.css">
   <title>ToDo</title>
 </head>
 <body>
 
-  <form>
+  <form method="POST" name="formRegister">
     <h1>Nueva cuenta</h1>
 
     <div class="image"></div>
 
     <label>
       Nombre:
-      <input type="text">
+      <input type="text" name="firstName" required>
+    </label>
+    <label>
+      Apellido:
+      <input type="text" name="lastName" required>
     </label>
     <label>
       Contraseña:
-      <input type="password">
+      <input type="password" name="password" required>
     </label>
     <label>
       Repetir contraseña:
-      <input type="password">
+      <input type="password" name="repassword" required>
     </label>
     <label>
       Email:
-      <input type="text">
-    </label>
+      <input type="text" name="email" required></label>
 
-    <button>Crear Cuenta</button>
-
-    <div class="form-footer">
-      <p>ToDo</p>
-    </div>
+      <button id="register-btn">Crear Cuenta</button>
+      <p>¿Ya tiene una cuenta?<a href="./login.html">Inicie sesión</a></p>
   </form>
+  <div class="form-footer">
+    <p>ToDo</p>
+  </div>
   
+  <script src="js/index.js" defer></script>
 </body>
 </html>
