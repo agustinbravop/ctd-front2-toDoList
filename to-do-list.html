@@ -5,8 +5,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/lista-tareas.css">
+  <link rel="stylesheet" href="css/to-do-list.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>ToDo</title>
+  <script src="js/prevent-access.js"></script>
 </head>
 
 <body>
@@ -30,7 +32,15 @@
   </form>
 
   <ul class="tareas-pendientes">
-    
+    <!-- `
+        <li class="tarea">
+            <div class="not-done"></div>
+            <div class="descripcion">
+                <p class="nombre">${task.description}</p>
+                <p class="timestamp">Creada: ${task.createdAt.substring(0, 10)}</p>
+            </div>
+        </li>
+        `-->
   </ul>
 
   <h2 class="titulo-terminadas">Tareas terminadas</h2>

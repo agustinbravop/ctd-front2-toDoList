@@ -3,15 +3,17 @@
 function renderTasks(tasks){
     const completedTasks = document.querySelector(".tareas-terminadas");
     const pendingTasks = document.querySelector('.tareas-pendientes');
+    let ulTasks;
     for(let task of tasks){
-        let ulTasks = task.completed ? completedTasks : pendingTasks;
+        ulTasks = task.completed ? completedTasks : pendingTasks;
         ulTasks.innerHTML += `
-        <li class="tarea">
-            <div class="not-done"></div>
+        <li class="tarea" data-id=${task.id} data-completed=${task.completed}>
+            <div class="not-done" ></div>
             <div class="descripcion">
                 <p class="nombre">${task.description}</p>
-                <p class="timestamp">Creada: ${task.createdAt.substring(0, 10)}</p>
+                <p class="timestamp">Creada: ${new Date(task.createdAt).toLocaleDateString("es-AR")}</p>
             </div>
+            <button class="icon-delete-task"><i class="fas fa-minus-square"></i></button>
         </li>
         `
     }
@@ -23,7 +25,7 @@ let tasks;
 fetch("https://ctd-todo-api.herokuapp.com/v1/tasks", {
     method: "GET",
     headers: {
-        Authorization: sessionStorage.jwt
+        Authorization: sessionStorage.getItem("jwt")
     }
 })
 .then(response => {
@@ -31,7 +33,8 @@ fetch("https://ctd-todo-api.herokuapp.com/v1/tasks", {
 })
 .then(taskList => {
     tasks = taskList;
-    renderTasks(taskList)
+    renderTasks(taskList);
+    loadEventDeleteTask();
 })
 
 // Add new task. POSTS the new task and renders it's response.
@@ -50,7 +53,8 @@ form.addEventListener("submit", event => {
     fetch("https://ctd-todo-api.herokuapp.com/v1/tasks", {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",            authorization: sessionStorage.jwt,
+            "Content-Type": "application/json",
+            authorization: sessionStorage.jwt,
         },
         body: JSON.stringify({
             description: text.value,
@@ -69,3 +73,32 @@ form.addEventListener("submit", event => {
 
     text.value = "" // empties the input box for UX reasons
 })
+
+// Delete a task. Makes a DELETE request.
+
+function loadEventDeleteTask() {
+    const deleteButtons = document.querySelectorAll(".icon-delete-task");
+
+    deleteButtons.forEach(btn => {
+        btn.addEventListener("click", e => {
+            console.log(e.target)
+            console.log(e.target.parentElement)
+            console.log(e.target.parentElement.dataset)
+            console.log(e.target.parentElement.dataset.id)
+            const url = `https://ctd-todo-api.herokuapp.com/v1/tasks/${e.target.parentElement.parentElement.dataset.id}`
+
+            // removes task from API
+            fetch(url, {
+                method: "DELETE",
+                headers: {
+                    authorization: sessionStorage.getItem("jwt"),
+                }
+            })
+            .then( () => {
+                // removes task from UI
+                e.target.parentElement.parentElement.remove();
+            })
+
+        })
+    })
+}

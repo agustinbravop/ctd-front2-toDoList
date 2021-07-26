@@ -35,7 +35,14 @@ a {
   opacity: .3;
   margin-left: .7em;
 }
-
+#cerrarSesion{
+  padding: 2px 5px;
+  margin-left: 5px;
+  background-color: var(--primary);
+  color: white;
+  font-size: .7rem;
+  cursor: pointer;
+}
 /* Nueva tarea ----------------------------------------------------------- */
 
 .nueva-tarea {
@@ -81,7 +88,6 @@ a {
 
 .nueva-tarea button:hover {
   opacity: 1;
-  cursor: pointer;
 }
 
 .nueva-tarea button img {

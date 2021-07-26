@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles/lista-tareas.css">
+  <title>ToDo</title>
+  <!-- ------------------------- link a fontawesome -------------------------- -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <script src="js/tasks.js"></script>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="#">My ToDo's</a>
+    </nav>
+
+    <div class="user-info">
+      <p>username</p>
+      <div class="user-image"></div>
+      <button id="cerrarSesion">Cerrar sesión</button>
+    </div>
+  </header>
+
+
+  <form class="nueva-tarea">
+    <div class="not-done "></div>
+    <input type="text" placeholder="Nueva tarea">
+    <button>
+      <img src="./assets/plus.png" alt="Agregar Tarea">
+    </button>
+  </form>
+
+  <ul class="tareas-pendientes">
+    
+  </ul>
+
+  <h2 class="titulo-terminadas">Tareas terminadas</h2>
+  <ul class="tareas-terminadas">
+    
+  </ul>
+
+</body>
+</html>
